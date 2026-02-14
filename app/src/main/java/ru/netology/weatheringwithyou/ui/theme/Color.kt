@@ -2,10 +2,11 @@ package ru.netology.weatheringwithyou.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val PrimaryColorLight = Color(0xCC212121)
+val PrimaryColorDark = Color(0xCCD4D4D4)
+val LabelColorLight = Color(0xFFFFFFFF)
+val LabelColorDark = Color(0xB2FFFFFF)
+val BackgroundColorLight = Color(0xFFF0EAE7)
+val BackgroundColorDark = Color(0xFF010B21)
+val SurfaceColorLight = Color(0x4DFFFFFF)
+val SurfaceColorDark = Color(0x4D000000)

@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">Weathering with you</string>
+    <string name="app_name">Погода с тобой</string>
+    <string name="go_to_settings">Перейти в настройки приложения</string>
+    <string name="temperature_description">Температура:\n%1$s° (ощущается как %2$s°)\n↓%3$s° ↑%4$s°</string>
+    <string name="pressure_and_humidity_description">Давление: %1$s мбар\nВлажность: %2$s%</string>
+    <string name="wind_speed_and_visibility_description">Скорость ветра: %1$s км/ч\nВидимость: %2$sм</string>
+    <string name="sunrise_and_sunset_description">Восход: %1$s | Закат: %2$s</string>
+    <string name="settings">Настройки</string>
+    <string name="go_back">Вернуться на предыдущий экран</string>
+
+    <string name="theme_choose">Выбор темы</string>
+    <string name="light">Светлая</string>
+    <string name="dark">Тёмная</string>
+
+    <string name="city_choose">Выбор города</string>
+    <string name="vsevolozsk">Всеволожск</string>
+    <string name="moscow">Москва</string>
+    <string name="saint_petersburg">Санкт-Петербург</string>
+    <string name="grodno">Гродно</string>
+
+    <string name="language_choose">Выбор языка</string>
+    <string name="russian">Русский</string>
+    <string name="english">Английский</string>
 </resources>
