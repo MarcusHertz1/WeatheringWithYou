@@ -64,7 +64,7 @@ fun MainScreen(goToSettings: () -> Unit) {
             containerColor = Color.Transparent,
             topBar = {
                 WeatherTopbar(
-                    city = stringResource(R.string.vsevolozsk), // todo доработать
+                    city = stringResource(R.string.Vsevolozhsk), // todo доработать
                     temperature = "-11", // todo доработать
                     weatherText = "Облачно", //todo доработай
                     onSettingsClick = goToSettings,

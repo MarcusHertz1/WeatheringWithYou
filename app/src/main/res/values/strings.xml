@@ -13,9 +13,8 @@
     <string name="dark">Тёмная</string>
 
     <string name="city_choose">Выбор города</string>
-    <string name="vsevolozsk">Всеволожск</string>
+    <string name="Vsevolozhsk">Всеволожск</string>
     <string name="moscow">Москва</string>
-    <string name="saint_petersburg">Санкт-Петербург</string>
     <string name="grodno">Гродно</string>
 
     <string name="language_choose">Выбор языка</string>

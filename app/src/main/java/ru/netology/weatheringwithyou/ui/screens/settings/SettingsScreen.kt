@@ -1,4 +1,4 @@
-package ru.netology.weatheringwithyou.ui.screens
+package ru.netology.weatheringwithyou.ui.screens.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,26 +24,44 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.netology.weatheringwithyou.R
 import ru.netology.weatheringwithyou.ui.theme.WeatheringWithYouTheme
+import ru.netology.weatheringwithyou.utils.City
+import ru.netology.weatheringwithyou.utils.Language
+import ru.netology.weatheringwithyou.utils.Theme
 
 @Composable
-fun SettingsScreen(onBackClick: () -> Unit) {
+fun SettingsScreen(
+    viewModel: SettingsViewModel = hiltViewModel(),
+    onBackClick: () -> Unit
+) {
     Scaffold(
-        topBar = { SettingsTopBar(onBackClick = onBackClick) } // todo доделай
+        topBar = { SettingsTopBar(onBackClick = onBackClick) }
     ) { innerPadding ->
-        SettingsScreenView(innerPadding)
+        val state by viewModel.state.collectAsStateWithLifecycle()
+        SettingsScreenView(
+            innerPadding = innerPadding,
+            state = state,
+            applyAction = { viewModel.applyAction(it) },
+        )
     }
 }
 
 @Composable
-private fun SettingsScreenView(innerPadding: PaddingValues) {
+private fun SettingsScreenView(
+    innerPadding: PaddingValues,
+    state: SettingsState,
+    applyAction: (SettingsActions) -> Unit
+) {
     LazyColumn(
         modifier = Modifier
             .padding(innerPadding),
@@ -54,22 +72,35 @@ private fun SettingsScreenView(innerPadding: PaddingValues) {
     ) {
         settingsTitle(R.string.theme_choose)
         settingsSpacer()
-        settingsRadioButton(textRes = R.string.light)
-        settingsRadioButton(textRes = R.string.dark)
+        Theme.entries.forEach {
+            settingsRadioButton(
+                textRes = it.themeRes,
+                isSelected = it == state.theme,
+                onSelect = { applyAction(SettingsActions.updateTheme(it))},
+            )
+        }
         settingsSpacer()
 
         settingsTitle(R.string.city_choose)
         settingsSpacer()
-        settingsRadioButton(textRes = R.string.vsevolozsk)
-        settingsRadioButton(textRes = R.string.moscow)
-        settingsRadioButton(textRes = R.string.saint_petersburg)
-        settingsRadioButton(textRes = R.string.grodno)
+        City.entries.forEach {
+            settingsRadioButton(
+                textRes = it.cityRes,
+                isSelected = it == state.city,
+                onSelect = { applyAction(SettingsActions.udpateCity(it))},
+            )
+        }
         settingsSpacer()
 
         settingsTitle(R.string.language_choose)
         settingsSpacer()
-        settingsRadioButton(textRes = R.string.russian)
-        settingsRadioButton(textRes = R.string.english)
+        Language.entries.forEach {
+            settingsRadioButton(
+                textRes = it.languageRes,
+                isSelected = it == state.language,
+                onSelect = { applyAction(SettingsActions.updateLanguage(it))},
+            )
+        }
         settingsSpacer()
     }
 }
@@ -188,7 +219,8 @@ private fun RBPreview() {
 @Preview
 private fun SettingsScreenViewPreview() {
     WeatheringWithYouTheme(dynamicColor = false) {
-        SettingsScreen {}
+        SettingsScreen(
+        ) {}
     }
 }
 
