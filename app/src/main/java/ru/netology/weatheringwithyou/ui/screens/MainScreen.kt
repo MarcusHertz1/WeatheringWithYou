@@ -40,7 +40,7 @@ import ru.netology.weatheringwithyou.ui.theme.WeatheringWithYouTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen() {
+fun MainScreen(goToSettings: () -> Unit) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
         Image(
@@ -67,7 +67,7 @@ fun MainScreen() {
                     city = stringResource(R.string.vsevolozsk), // todo доработать
                     temperature = "-11", // todo доработать
                     weatherText = "Облачно", //todo доработай
-                    onSettingsClick = {}, //todo доработай
+                    onSettingsClick = goToSettings,
                     scrollBehavior = scrollBehavior,
                 )
             }
@@ -143,6 +143,6 @@ private fun Separator() {
 @Composable
 fun GreetingPreview() {
     WeatheringWithYouTheme(dynamicColor = false) {
-        MainScreen()
+        MainScreen {}
     }
 }
