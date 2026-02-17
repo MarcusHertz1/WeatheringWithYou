@@ -3,9 +3,9 @@ package ru.netology.weatheringwithyou.utils
 import androidx.annotation.StringRes
 import ru.netology.weatheringwithyou.R
 
-enum class Language(@StringRes val languageRes: Int) {
-    RUSSIAN(R.string.russian),
-    ENGLISH(R.string.english)
+enum class Language(@StringRes val languageRes: Int, val languageCode: String) {
+    RUSSIAN(R.string.russian, "ru"),
+    ENGLISH(R.string.english, "en")
 }
 
 enum class Theme(@StringRes val themeRes: Int) {

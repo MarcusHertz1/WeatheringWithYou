@@ -30,13 +30,13 @@ class SettingsViewModel @Inject constructor(
 
     override fun applyAction(action: SettingsActions) {
         when(action){
-            is SettingsActions.udpateCity -> viewModelScope.launch{
+            is SettingsActions.UpdateCity -> viewModelScope.launch{
                 dataStoreManager.updateCity(action.city)
             }
-            is SettingsActions.updateLanguage -> viewModelScope.launch{
+            is SettingsActions.UpdateLanguage -> viewModelScope.launch{
                 dataStoreManager.updateLanguage(action.language)
             }
-            is SettingsActions.updateTheme -> viewModelScope.launch{
+            is SettingsActions.UpdateTheme -> viewModelScope.launch{
                 dataStoreManager.updateTheme(action.theme)
             }
         }

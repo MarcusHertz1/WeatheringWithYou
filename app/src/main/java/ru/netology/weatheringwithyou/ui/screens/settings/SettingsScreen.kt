@@ -76,7 +76,7 @@ private fun SettingsScreenView(
             settingsRadioButton(
                 textRes = it.themeRes,
                 isSelected = it == state.theme,
-                onSelect = { applyAction(SettingsActions.updateTheme(it))},
+                onSelect = { applyAction(SettingsActions.UpdateTheme(it))},
             )
         }
         settingsSpacer()
@@ -87,7 +87,7 @@ private fun SettingsScreenView(
             settingsRadioButton(
                 textRes = it.cityRes,
                 isSelected = it == state.city,
-                onSelect = { applyAction(SettingsActions.udpateCity(it))},
+                onSelect = { applyAction(SettingsActions.UpdateCity(it))},
             )
         }
         settingsSpacer()
@@ -98,7 +98,7 @@ private fun SettingsScreenView(
             settingsRadioButton(
                 textRes = it.languageRes,
                 isSelected = it == state.language,
-                onSelect = { applyAction(SettingsActions.updateLanguage(it))},
+                onSelect = { applyAction(SettingsActions.UpdateLanguage(it))},
             )
         }
         settingsSpacer()
