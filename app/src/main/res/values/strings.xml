@@ -2,7 +2,7 @@
     <string name="app_name">Погода с тобой</string>
     <string name="go_to_settings">Перейти в настройки приложения</string>
     <string name="temperature_description">Температура:\n%1$s° (ощущается как %2$s°)\n↓%3$s° ↑%4$s°</string>
-    <string name="pressure_and_humidity_description">Давление: %1$s мбар\nВлажность: %2$s%</string>
+    <string name="pressure_and_humidity_description">Давление: %1$s мбар\nВлажность: %2$s</string>
     <string name="wind_speed_and_visibility_description">Скорость ветра: %1$s км/ч\nВидимость: %2$sм</string>
     <string name="sunrise_and_sunset_description">Восход: %1$s | Закат: %2$s</string>
     <string name="settings">Настройки</string>
@@ -20,4 +20,17 @@
     <string name="language_choose">Выбор языка</string>
     <string name="russian">Русский</string>
     <string name="english">Английский</string>
+
+    <string name="clear_sky">Ясно</string>
+    <string name="few_clouds">Небольшая облачность</string>
+    <string name="scattered_clouds">Переменно облачно</string>
+    <string name="broken_clouds">Немного облачно</string>
+    <string name="shower_rain">Ливень</string>
+    <string name="rain">Дождь</string>
+    <string name="thunderstorm">Гроза</string>
+    <string name="snow">Снег</string>
+    <string name="mist">Туман</string>
+
+    <string name="reload">Перезагрузить</string>
+    <string name="error_no_weather_data">Данные о погоде не найдены</string>
 </resources>

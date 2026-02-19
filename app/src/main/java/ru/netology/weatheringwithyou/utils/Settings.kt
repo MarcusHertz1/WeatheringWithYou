@@ -13,7 +13,7 @@ enum class Theme(@StringRes val themeRes: Int) {
     DARK(R.string.dark)
 }
 
-enum class City(@StringRes val cityRes: Int, cityForApi: String) {
+enum class City(@StringRes val cityRes: Int, val cityForApi: String) {
     VSEVOLOZSK(R.string.Vsevolozhsk, "vsevolozhsk,ru"),
     MOSCOW(R.string.moscow, "moscow,ru"),
     GRODNO(R.string.grodno, "grodno,by")

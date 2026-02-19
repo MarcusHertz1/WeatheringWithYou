@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -31,6 +32,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -114,10 +116,17 @@ private fun TopbarTitle(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Box(
-                        modifier = Modifier.fillMaxHeight(),
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .weight(1f)
+                            .fillMaxWidth()
+                            .padding(32.dp),
                         contentAlignment = Alignment.BottomStart
                     ) {
-                        WeatherLabel(weatherText = weatherText)
+                        WeatherLabel(
+                            weatherText = weatherText,
+                            modifier = Modifier
+                                .fillMaxWidth())
                     }
                     Text(
                         text = "${temperature}°",
@@ -160,7 +169,9 @@ private fun WeatherLabel(
         )
         Text(
             modifier = Modifier
-                .background(surfaceColor),
+                .background(surfaceColor)
+                .weight(1f, fill = false),
+            textAlign = TextAlign.Center,
             text = weatherText,
             fontSize = 20.sp,
         )

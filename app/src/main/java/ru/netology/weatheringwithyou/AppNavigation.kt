@@ -5,7 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.Serializable
-import ru.netology.weatheringwithyou.ui.screens.MainScreen
+import ru.netology.weatheringwithyou.ui.screens.main.MainScreen
 import ru.netology.weatheringwithyou.ui.screens.settings.SettingsScreen
 
 @Composable
@@ -14,10 +14,10 @@ fun AppNavigation() {
 
     NavHost(navController = navController, startDestination = Main.toString()) {
         composable(route = Settings.toString()) {
-            SettingsScreen() { navController.popBackStack() }
+            SettingsScreen { navController.popBackStack() }
         }
         composable(route = Main.toString()) {
-            MainScreen { navController.navigate(Settings.toString()) }
+            MainScreen (goToSettings = { navController.navigate(Settings.toString()) } )
         }
     }
 }

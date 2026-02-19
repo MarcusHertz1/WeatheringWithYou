@@ -3,7 +3,7 @@
     <string name="app_name">Weathering with you</string>
     <string name="go_to_settings">Go to app settings</string>
     <string name="temperature_description">Temperature:\n%1$s° (feels like %2$s°)\n↓%3$s° ↑%4$s°</string>
-    <string name="pressure_and_humidity_description">Pressure: %1$s mbar\nHumidity: %2$s%</string>
+    <string name="pressure_and_humidity_description">Pressure: %1$s mbar\nHumidity: %2$s</string>
     <string name="wind_speed_and_visibility_description">Wind speed: %1$s km/h\nVisibility: %2$sm</string>
     <string name="sunrise_and_sunset_description">Sunrise: %1$s | Sunset: %2$s</string>
     <string name="settings">Settings</string>
@@ -21,4 +21,17 @@
     <string name="language_choose">Language choose</string>
     <string name="russian">Russian</string>
     <string name="english">English</string>
+
+    <string name="clear_sky">Clear sky</string>
+    <string name="few_clouds">Few clouds</string>
+    <string name="scattered_clouds">Scattered clouds</string>
+    <string name="broken_clouds">Broken clouds</string>
+    <string name="shower_rain">Shower rain</string>
+    <string name="rain">Rain</string>
+    <string name="thunderstorm">Thunderstorm</string>
+    <string name="snow">Snow</string>
+    <string name="mist">Mist</string>
+
+    <string name="reload">Reload</string>
+    <string name="error_no_weather_data">Weather data not found</string>
 </resources>
