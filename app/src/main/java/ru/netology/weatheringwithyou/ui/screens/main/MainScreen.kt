@@ -87,10 +87,10 @@ private fun WeatherView(
 ) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
-        val imageModifier = weatherData.weather.imageRes?.let{
+        val imageModifier = weatherData.weather.imageRes?.let {
             Modifier.paint(
                 painterResource(id = weatherData.weather.backgroundRes),
-                contentScale = ContentScale.FillWidth,
+                contentScale = ContentScale.FillBounds,
                 alignment = Alignment.TopCenter
             )
         } ?: Modifier
@@ -100,7 +100,7 @@ private fun WeatherView(
                     ?: weatherData.weather.backgroundRes
             ),
             alignment = Alignment.TopStart,
-            contentScale = ContentScale.FillHeight,
+            contentScale = if (weatherData.weather.imageRes != null) ContentScale.FillHeight else ContentScale.FillBounds,
             contentDescription = null,
             modifier = imageModifier
                 .height(280.dp)
