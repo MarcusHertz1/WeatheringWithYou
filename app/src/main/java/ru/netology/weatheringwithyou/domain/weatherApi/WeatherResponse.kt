@@ -1,4 +1,4 @@
-package ru.netology.weatheringwithyou.domain
+package ru.netology.weatheringwithyou.domain.weatherApi
 
 import android.icu.text.SimpleDateFormat
 import android.icu.util.TimeZone

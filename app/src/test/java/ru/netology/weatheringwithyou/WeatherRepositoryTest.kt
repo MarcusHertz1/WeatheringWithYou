@@ -10,13 +10,13 @@ import org.mockito.Mockito.mock
 import org.mockito.kotlin.whenever
 import org.mockito.kotlin.any
 import org.robolectric.RobolectricTestRunner
-import ru.netology.weatheringwithyou.domain.Main
-import ru.netology.weatheringwithyou.domain.Sys
-import ru.netology.weatheringwithyou.domain.Weather
-import ru.netology.weatheringwithyou.domain.WeatherApiService
-import ru.netology.weatheringwithyou.domain.WeatherRepository
-import ru.netology.weatheringwithyou.domain.WeatherResponse
-import ru.netology.weatheringwithyou.domain.Wind
+import ru.netology.weatheringwithyou.domain.weatherApi.Main
+import ru.netology.weatheringwithyou.domain.weatherApi.Sys
+import ru.netology.weatheringwithyou.domain.weatherApi.Weather
+import ru.netology.weatheringwithyou.domain.weatherApi.WeatherApiService
+import ru.netology.weatheringwithyou.domain.weatherApi.WeatherRepository
+import ru.netology.weatheringwithyou.domain.weatherApi.WeatherResponse
+import ru.netology.weatheringwithyou.domain.weatherApi.Wind
 
 @RunWith(RobolectricTestRunner::class)
 @OptIn(ExperimentalCoroutinesApi::class)

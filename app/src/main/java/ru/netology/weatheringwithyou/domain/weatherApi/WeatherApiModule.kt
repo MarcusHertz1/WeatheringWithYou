@@ -1,4 +1,4 @@
-package ru.netology.weatheringwithyou.domain
+package ru.netology.weatheringwithyou.domain.weatherApi
 
 import dagger.Module
 import dagger.Provides

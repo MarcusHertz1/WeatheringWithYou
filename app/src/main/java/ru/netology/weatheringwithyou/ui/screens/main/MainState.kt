@@ -1,6 +1,6 @@
 package ru.netology.weatheringwithyou.ui.screens.main
 
-import ru.netology.weatheringwithyou.domain.WeatherData
+import ru.netology.weatheringwithyou.domain.weatherApi.WeatherData
 import ru.netology.weatheringwithyou.ui.appBase.UiState
 import ru.netology.weatheringwithyou.utils.AppState
 import ru.netology.weatheringwithyou.utils.City

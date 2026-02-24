@@ -21,6 +21,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
@@ -39,7 +40,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.netology.weatheringwithyou.R
-import ru.netology.weatheringwithyou.domain.WeatherData
+import ru.netology.weatheringwithyou.domain.weatherApi.WeatherData
+import ru.netology.weatheringwithyou.ui.components.SettingsButton
 import ru.netology.weatheringwithyou.ui.components.WeatherItem
 import ru.netology.weatheringwithyou.ui.components.WeatherTopbar
 import ru.netology.weatheringwithyou.ui.theme.WeatheringWithYouTheme
@@ -54,17 +56,18 @@ fun MainScreen(
     val error = remember(state.error) { state.error }
     PullToRefreshBox(
         isRefreshing = state.isLoading,
-        onRefresh = { viewModel.applyAction(MainActions.LoadWeather) }
+        onRefresh = { viewModel.applyAction(MainActions.LoadWeather) },
+        modifier = Modifier.fillMaxSize()
     ) {
         when {
-            state.isLoading -> LoadingView()
-            error != null -> ErrorView(error)
+            error != null -> ErrorView(errorText = error, goToSettings = goToSettings, showRetryButton = true)
+            state.isLoading && state.weatherData == null -> LoadingView()
             state.weatherData == null -> ErrorView(
                 stringResource(R.string.error_no_weather_data),
                 onRetryClick = { viewModel.applyAction(MainActions.LoadWeather) },
                 showRetryButton = true,
+                goToSettings = goToSettings
             )
-
             else -> {
                 state.weatherData?.let { weatherData ->
                     WeatherView(
@@ -227,20 +230,34 @@ private fun LoadingView() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {}
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ErrorView(
     errorText: String,
     onRetryClick: () -> Unit = {},
-    showRetryButton: Boolean = false
+    showRetryButton: Boolean = false,
+    goToSettings: () -> Unit
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = errorText)
-        if (showRetryButton) Button(onClick = onRetryClick) { Text(text = stringResource(R.string.reload)) }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.app_name)) },
+                actions = { SettingsButton(onSettingsClick = goToSettings, buttonTint = MaterialTheme.colorScheme.primary) }
+            )
+        }
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
+            verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(text = errorText)
+            if (showRetryButton) Button(onClick = onRetryClick) { Text(text = stringResource(R.string.reload)) }
+        }
     }
+
 }
 
 @Preview(showBackground = true, showSystemUi = true)
