@@ -1,4 +1,4 @@
-package ru.netology.weatheringwithyou.domain
+package ru.netology.weatheringwithyou.domain.weatherApi
 
 import javax.inject.Inject
 import javax.inject.Singleton

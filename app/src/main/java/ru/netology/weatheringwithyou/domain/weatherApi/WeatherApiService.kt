@@ -1,4 +1,4 @@
-package ru.netology.weatheringwithyou.domain
+package ru.netology.weatheringwithyou.domain.weatherApi
 
 import retrofit2.http.GET
 import retrofit2.http.Query

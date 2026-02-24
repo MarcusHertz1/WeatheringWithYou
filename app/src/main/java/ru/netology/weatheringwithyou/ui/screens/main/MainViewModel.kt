@@ -6,27 +6,41 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import ru.netology.weatheringwithyou.data.DataStoreManager
-import ru.netology.weatheringwithyou.domain.WeatherRepository
+import ru.netology.weatheringwithyou.domain.weatherApi.WeatherRepository
 import ru.netology.weatheringwithyou.ui.appBase.BaseViewModel
 import ru.netology.weatheringwithyou.ui.appBase.UiEvent
+import ru.netology.weatheringwithyou.domain.networkCheck.NetworkObserver
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val dataStoreManager: DataStoreManager,
-    val weatherRepository: WeatherRepository
+    val weatherRepository: WeatherRepository,
+    private val networkObserver: NetworkObserver,
 ) : BaseViewModel<MainState, UiEvent, MainActions>() {
     override fun createInitialState(): MainState = MainState()
 
     init {
+        networkObserver.startObserving()
         viewModelScope.launch {
-            dataStoreManager.appState.collect {
-                updateState {
-                    copy(
-                        selectedCity = it.city,
-                    )
+            networkObserver.isConnected.collect { connected ->
+                if (!connected) {
+                    updateState{
+                        copy(
+                            error = "Нет интернет-соединения",
+                            isLoading = false
+                        )
+                    }
+                } else {
+                    dataStoreManager.appState.collect {
+                        updateState {
+                            copy(
+                                selectedCity = it.city,
+                            )
+                        }
+                        loadWeather()
+                    }
                 }
-                loadWeather()
             }
         }
     }
@@ -57,5 +71,10 @@ class MainViewModel @Inject constructor(
             }
         }
 
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        networkObserver.stopObserving()
     }
 }
